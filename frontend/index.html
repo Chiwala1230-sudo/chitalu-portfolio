@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitalu Chiwala | Full-Stack Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Chitalu Chiwala (Ernest) - Full-Stack Developer student based in Ndola, Zambia">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">chitalu.io</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <div class="mobile-nav-links" id="mobileNavLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<main>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge"><i class="fas fa-map-marker-alt"></i> Ndola, Zambia</div>
+                <h1>Chitalu Chiwala</h1>
+                <div class="hero-title">Full-Stack Developer (Student) | chitalu.io</div>
+                <div class="hero-tagline">"Building real-world web applications that solve practical problems"</div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                I am a software engineering student passionate about building real-world applications and solving practical problems using technology. I specialize in full-stack web development using JavaScript, React, and modern databases like MongoDB and PostgreSQL.
+            </div>
+            <div class="about-text">
+                I have built multiple projects including an event management system, a tax system prototype inspired by ZRA, a multilingual translator web app, and a weather application. I also independently developed and deployed a Grade 7 educational study game using Netlify and Vercel.
+            </div>
+            <div class="about-text">
+                I was part of a team that won <strong>3rd place at the Mukuba Hackathon</strong>, where we built a real-time energy management system aimed at improving household electricity usage efficiency.
+            </div>
+            <div class="about-text">
+                Currently, I am working on a university learning platform that will help students access past exam questions, study materials, and learning resources.
+            </div>
+            <div class="about-text">
+                I am actively seeking internship and collaboration opportunities.
+            </div>
+            <h3 class="skills-heading">🧠 Core Competencies</h3>
+            <div class="skills-grid" id="skillsContainer"></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid" id="projectsContainer"></div>
+        </div>
+    </section>
+
+    <section id="hackathon">
+        <div class="container">
+            <h2 class="section-title">🏆 Hackathon Achievement</h2>
+            <div class="hack-card">
+                <div class="hack-title">
+                    Mukuba Hackathon – 3rd Place Winner 
+                    <span class="winner-badge"><i class="fas fa-trophy"></i> 3rd Place</span>
+                </div>
+                <p style="margin-top: 20px;"><strong>Real-time Energy Management System</strong> — Built with a team of 4. Focused on reducing household electricity waste using an innovative hardware + software solution.</p>
+                <p style="margin-top: 16px;">The system combined IoT sensors with a React dashboard to track real-time consumption, providing AI-driven insights to cut down unnecessary power usage.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> 
+                        <span>ernestchiwala2@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> 
+                        <span>chitaluchiwala@icloud.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> 
+                        <span>+260 978 659 179</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i> 
+                        <span>+260 769 427 684</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i> 
+                        <span>Ernest Chiwala</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-tiktok"></i> 
+                        <span>@chitalu.io</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-pin"></i> 
+                        <span>Ndola, Copperbelt, Zambia</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/Chiwala1230-sudo" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ernest-chiwala-bb21b5402" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://tiktok.com/@chitalu.io" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/260769427684" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="contact-note">
+                        Open for internships & junior full-stack roles — Let's build something impactful.
+                    </div>
+                </div>
+                <form id="contactForm">
+                    <input type="text" id="contactName" placeholder="Your name" required>
+                    <input type="email" id="contactEmail" placeholder="Email address" required>
+                    <textarea id="contactMessage" placeholder="Tell me about an opportunity or collaboration..."></textarea>
+                    <button type="submit" class="btn btn-primary form-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    <p id="formFeedback" class="form-feedback"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Chitalu (Ernest) Chiwala • Full-Stack Developer • Ndola, Zambia 🌍</p>
+            <p style="margin-top: 8px; font-size: 0.75rem;">📞 +260 978 659 179 | 💬 WhatsApp: +260 769 427 684</p>
+        </div>
+    </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
