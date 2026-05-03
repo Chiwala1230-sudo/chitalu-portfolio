@@ -1,12 +1,14 @@
-// Portfolio JavaScript - Fully Connected to Backend
-// Complete working version with real API integration
+// Portfolio JavaScript - Fully Connected to Live Backend
+// Backend hosted on Deno Deploy
+
+// ===== BACKEND CONFIGURATION =====
+// Live production backend URL
+const BACKEND_URL = 'https://chitalu-portfolio.chiwala1230-sudo.deno.net';
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ===== BACKEND CONFIGURATION =====
-    // Change this to your backend URL when deployed
-    const BACKEND_URL = 'http://localhost:5000';
+    console.log('🚀 Portfolio loaded - Backend URL:', BACKEND_URL);
     
     // ===== SKILLS DATA =====
     const skillsList = [
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         skillsContainer.innerHTML = skillsList.map(skill => 
             `<span class="skill-chip">${skill}</span>`
         ).join('');
+        console.log('✅ Skills loaded:', skillsList.length);
     }
     
     // ===== PROJECTS DATA =====
@@ -31,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Interactive educational game for grade 7 students, covering math & science topics. Deployed on Netlify and Vercel.",
             tech: ["React", "CSS", "Vercel", "Netlify"],
             liveUrl: "https://grade7-game.netlify.app",
-            githubUrl: "https://github.com/chitalu/grade7-game"
+            githubUrl: "https://github.com/Chiwala1230-sudo/study-game-backend-1"
         },
         {
             title: "🎓 Uni Learning Platform",
@@ -39,15 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Central hub for past exam questions, study notes & materials for university students.",
             tech: ["MERN", "PostgreSQL", "Tailwind"],
             liveUrl: null,
-            githubUrl: "https://github.com/chitalu/university-platform"
+            githubUrl: "https://github.com/Chiwala1230-sudo"
         },
         {
             title: "📅 Event Management System",
             status: null,
             description: "Complete event scheduling, ticket tracking and attendee management solution for local organizers.",
             tech: ["React", "Node.js", "MongoDB", "Express"],
-            liveUrl: "https://eventmanager.demo.com",
-            githubUrl: "https://github.com/chitalu/event-management"
+            liveUrl: null,
+            githubUrl: "https://github.com/Chiwala1230-sudo"
         },
         {
             title: "🏦 ZRA Tax System Clone",
@@ -55,23 +58,23 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Prototype inspired by Zambia Revenue Authority features: tax calculation, filing simulation and dashboards.",
             tech: ["JavaScript", "PostgreSQL", "HTML/CSS", "Chart.js"],
             liveUrl: null,
-            githubUrl: "https://github.com/chitalu/zra-tax-clone"
+            githubUrl: "https://github.com/Chiwala1230-sudo"
         },
         {
             title: "🌍 Multilingual Translator",
             status: null,
             description: "Web app supporting real-time translation between 10+ languages, using external API and modern UI.",
             tech: ["React", "Axios", "CSS"],
-            liveUrl: "https://translator-app.demo.com",
-            githubUrl: "https://github.com/chitalu/translator-app"
+            liveUrl: null,
+            githubUrl: "https://github.com/Chiwala1230-sudo"
         },
         {
             title: "⛅ Weather Web App",
             status: null,
             description: "Real-time weather dashboard with 5-day forecast, search by city, dynamic backgrounds.",
             tech: ["JavaScript", "OpenWeather API", "CSS Grid"],
-            liveUrl: "https://weatherapp.demo.com",
-            githubUrl: "https://github.com/chitalu/weather-app"
+            liveUrl: null,
+            githubUrl: "https://github.com/Chiwala1230-sudo"
         }
     ];
     
@@ -82,14 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Generate tech stack spans
             const techSpans = project.tech.map(tech => `<span>${tech}</span>`).join('');
             
-            // Generate links HTML (only show if URLs exist)
+            // Generate links HTML
             let linksHTML = '';
-            if (project.liveUrl && project.liveUrl !== '#') {
+            if (project.liveUrl) {
                 linksHTML += `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i> View Live
                 </a>`;
             }
-            if (project.githubUrl && project.githubUrl !== '#') {
+            if (project.githubUrl) {
                 linksHTML += `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github"></i> GitHub
                 </a>`;
@@ -109,9 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }).join('');
+        console.log('✅ Projects loaded:', projectsData.length);
     }
     
-    // ===== CONTACT FORM HANDLER (Connected to Backend) =====
+    // ===== CONTACT FORM HANDLER (Connected to Live Backend) =====
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -154,6 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             try {
+                console.log('📡 Sending to backend:', BACKEND_URL);
+                
                 // Send data to backend
                 const response = await fetch(`${BACKEND_URL}/api/contact`, {
                     method: 'POST',
@@ -164,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 const data = await response.json();
+                console.log('📬 Response:', data);
                 
                 if (response.ok && data.success) {
                     // Success!
@@ -181,12 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
             } catch (error) {
-                console.error('Connection error:', error);
+                console.error('❌ Connection error:', error);
                 
-                // Check if backend is running
                 showFeedback(
                     feedback, 
-                    '❌ Cannot connect to server. Please make sure the backend is running on port 5000', 
+                    '❌ Cannot connect to server. Please try again later.', 
                     'error'
                 );
                 
@@ -222,15 +228,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== CHECK BACKEND HEALTH ON LOAD =====
     async function checkBackendStatus() {
         try {
+            console.log('🔍 Checking backend health...');
             const response = await fetch(`${BACKEND_URL}/api/health`);
+            const data = await response.json();
             if (response.ok) {
-                console.log('✅ Backend connected successfully');
+                console.log('✅ Backend connected successfully:', data);
             } else {
                 console.warn('⚠️ Backend responded but with error');
             }
         } catch (error) {
-            console.warn('⚠️ Backend not running. Contact form will not work.');
-            console.warn('Start backend with: cd backend && npm run dev');
+            console.warn('⚠️ Backend connection issue:', error.message);
         }
     }
     checkBackendStatus();
@@ -316,4 +323,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     console.log('✅ Portfolio website loaded successfully!');
+    console.log('📧 Contact form connected to:', BACKEND_URL);
 });
